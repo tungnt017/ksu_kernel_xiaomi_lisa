@@ -37,7 +37,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa
         git clone https://gitlab.com/simonpunk/susfs4ksu.git --depth=1
-        cd $GITHUB_WORKSPACE/kernel_workspace/susfs4ksu
+        cd $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa/susfs4ksu
         cp ./kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa/KernelSU/
         cp ./kernel_patches/50_add_susfs_in_kernel-5.4.patch $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa
         cp ./kernel_patches/fs/susfs.c $KERNEL_ROOT/fs/ $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa/fs 
