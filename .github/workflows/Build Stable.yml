@@ -45,8 +45,15 @@ jobs:
         cp ./kernel_patches/50_add_susfs_in_kernel-5.4.patch $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa
         cp ./kernel_patches/fs/susfs.c $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa/fs 
         cp ./kernel_patches/include/linux/susfs.h $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa
+    - name: Integrate susfs3
+      run: |    
         cd $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa/KernelSU/ 
-        patch -p1 < 10_enable_susfs_for_ksu.patch && patch -p1 < 50_add_susfs_in_kernel-5.4.patch
+        patch -p1 < 10_enable_susfs_for_ksu.patch && 
+
+    - name: Integrate susfs4
+      run: |    
+        cd $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa/   
+        patch -p1 < 50_add_susfs_in_kernel-5.4.patch
 
     - name: Compiling Kernel
       run: |
