@@ -26,13 +26,13 @@ jobs:
     - name: Download kernel source
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone https://github.com/tungnt017/ksu_kernel_xiaomi_lisa.git --depth=1
+        git clone https://github.com/likkai/ksu_kernel_xiaomi_lisa.git --depth=1
         
-    - name: Integrate SukiSU-Ultra
+    - name: Integrate KernelSU
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa
         rm -rf KernelSU/
-        curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s susfs-main
+        curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s dev_susfs
         
     - name: Compiling Kernel
       run: |
