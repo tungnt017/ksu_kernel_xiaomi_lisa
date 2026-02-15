@@ -48,7 +48,7 @@ jobs:
     - name: Integrate susfs3
       run: |    
         cd $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa/KernelSU/ 
-        patch -p1 < 10_enable_susfs_for_ksu.patch && 
+        patch -p1 < 10_enable_susfs_for_ksu.patch 
 
     - name: Integrate susfs4
       run: |    
