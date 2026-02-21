@@ -28,33 +28,12 @@ jobs:
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone https://github.com/likkai/ksu_kernel_xiaomi_lisa.git --depth=1
         
-    - name: Integrate KernelSU
+    - name: Integrate SukiSU-Ultra
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa
-        curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s dev_susfs
-
-    - name: Integrate susfs
-      run: |
-        cd $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa
-        git clone https://gitlab.com/simonpunk/susfs4ksu.git --depth=1
-
-    - name: Integrate susfs2
-      run: |        
-        cd $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa/susfs4ksu
-        cp ./kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa/KernelSU/
-        cp ./kernel_patches/50_add_susfs_in_kernel-5.4.patch $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa
-        cp ./kernel_patches/fs/susfs.c $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa/fs 
-        cp ./kernel_patches/include/linux/susfs.h $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa
-    - name: Integrate susfs3
-      run: |    
-        cd $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa/KernelSU/ 
-        patch -p1 < 10_enable_susfs_for_ksu.patch 
-
-    - name: Integrate susfs4
-      run: |    
-        cd $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa/   
-        patch -p1 < 50_add_susfs_in_kernel-5.4.patch
-
+        rm -rf KernelSU/
+        curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s builtin
+        
     - name: Compiling Kernel
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/ksu_kernel_xiaomi_lisa
